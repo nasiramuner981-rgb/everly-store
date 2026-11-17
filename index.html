@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Everly – Everything for everyone</title>
+<style>
+:root{--bg:#fff8f3;--fg:#3b2a26;--mut:#86706a;--card:#fdeee4;--line:#f1dfd3;--acc:#d2593b;--accfg:#fff;--ok:#1d7a45;--mint:#d9ece1;--peach:#fbdccb;--yel:#fcebc0;--lav:#e6dcf1;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:76px;scroll-behavior:smooth}
+body{background:linear-gradient(#fff8f3,#fdeee4);color:var(--fg);font:16px/1.55 "Nunito",system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+h1,h2,.logo{font-family:"Fraunces",Georgia,serif}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
+.bar{background:var(--mint);text-align:center;font-size:13px;font-weight:700;padding:8px 12px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,248,243,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:10px 16px}
+.logo{font-weight:800;font-size:26px;color:var(--acc);display:inline-flex;gap:6px;align-items:center}
+.logo span{display:inline-block;transition:transform .4s}.logo:hover span{transform:rotate(-18deg) scale(1.15)}
+nav{display:none;gap:22px;margin-left:24px;font-weight:700}
+nav button{background:none;border:0;padding:4px 0;position:relative}
+nav button::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--acc);transition:width .25s}nav button:hover::after{width:100%}
+.sp{flex:1}
+.hb{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-weight:700;font-size:14px}
+.cartbtn{background:var(--acc);color:var(--accfg);border:0;border-radius:999px;padding:10px 18px;font-weight:800}
+.pop{animation:pop .4s}
+.hero{max-width:1200px;margin:0 auto;padding:36px 16px 24px;display:grid;gap:28px;align-items:center}
+.ht>*{animation:up .7s both}.ht>:nth-child(2){animation-delay:.1s}.ht>:nth-child(3){animation-delay:.2s}.ht>:nth-child(4){animation-delay:.3s}
+.pill{display:inline-block;background:var(--peach);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:800}
+.hero h1{font-weight:800;font-size:clamp(38px,9vw,68px);line-height:1.05;margin:14px 0}
+.hero em{font-style:normal;color:var(--acc)}
+.hero p{max-width:44ch;color:var(--mut);font-size:18px;margin-bottom:22px}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--acc);color:var(--accfg);border:0;border-radius:999px;padding:14px 28px;font-weight:800;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(210,89,59,.3)}.btn:active{transform:scale(.97)}
+.btn.ghost{background:#fff;color:var(--fg);border:1.5px solid var(--line)}
+.hv{position:relative;aspect-ratio:1;max-width:460px;width:100%;margin:0 auto;background:linear-gradient(135deg,var(--peach),var(--yel));border-radius:42% 58% 55% 45%/50% 45% 55% 50%;display:grid;place-items:center;animation:blob 9s ease-in-out infinite}
+.big{font-size:clamp(110px,28vw,190px);animation:flt 4s ease-in-out infinite}
+.f{position:absolute;font-size:38px;background:#fff;border-radius:50%;width:68px;height:68px;display:grid;place-items:center;box-shadow:0 6px 16px rgba(120,70,50,.15);animation:flt 5s ease-in-out infinite}
+.f1{top:6%;left:8%}.f2{top:12%;right:4%;animation-delay:.8s}.f3{bottom:8%;left:2%;animation-delay:1.6s}.f4{bottom:4%;right:10%;animation-delay:2.4s}.f5{top:44%;left:-3%;animation-delay:3.2s}
+h2{font-weight:800;font-size:28px;margin:8px 0 16px}
+.ctr{text-align:center}
+.chips{display:flex;gap:12px;overflow-x:auto;padding:6px 16px 16px;max-width:1200px;margin:0 auto;scrollbar-width:none}
+.chip{flex:none;width:92px;border:0;border-radius:22px;padding:14px 6px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:800;font-size:13px;transition:transform .25s}
+.chip:hover{transform:translateY(-5px) rotate(-1.5deg)}
+.chip .ci{font-size:30px;line-height:1}
+.chip:nth-child(4n+1){background:var(--mint)}.chip:nth-child(4n+2){background:var(--peach)}.chip:nth-child(4n+3){background:var(--yel)}.chip:nth-child(4n+4){background:var(--lav)}
+.chip[aria-pressed="true"]{box-shadow:0 0 0 3px var(--acc)}
+main{max-width:1200px;margin:0 auto;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:#fff;border-radius:20px;padding:10px;box-shadow:0 2px 10px rgba(120,70,50,.07);transition:transform .25s,box-shadow .25s;animation:up .5s both}
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 26px rgba(120,70,50,.14)}
+.pimg{aspect-ratio:1;display:grid;place-items:center;font-size:64px;border-radius:14px;overflow:hidden;background:var(--mint);transition:transform .3s}
+.card:nth-child(4n+2) .pimg{background:var(--peach)}.card:nth-child(4n+3) .pimg{background:var(--yel)}.card:nth-child(4n+4) .pimg{background:var(--lav)}
+.card:hover .pimg{transform:scale(1.04)}
+.pn{font-weight:800;margin-top:10px}
+.pc{color:var(--mut);font-size:14px}
+.pp{font-weight:800;margin:4px 0 8px;color:var(--acc)}
+.add{width:100%;border:1.5px solid var(--acc);color:var(--acc);background:none;border-radius:999px;padding:9px;font-weight:800;transition:background .2s,color .2s}
+.add:hover,.add:active{background:var(--acc);color:var(--accfg)}
+.why{max-width:1200px;margin:32px auto 0;padding:24px 16px;background:var(--mint);border-radius:28px;text-align:center}
+.wg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.wg div{display:flex;flex-direction:column;gap:2px;align-items:center}
+.wg span{font-size:32px;transition:transform .3s}.wg div:hover span{transform:scale(1.25) rotate(8deg)}
+.wg small{color:var(--mut)}
+.help{max-width:1200px;margin:24px auto 0;padding:24px 16px;background:var(--peach);border-radius:28px;text-align:center}
+.help p{color:var(--mut);margin-bottom:14px}
+footer{margin-top:32px;padding:28px 16px;color:var(--mut);font-size:14px;text-align:center}
+footer .logo{font-size:22px;justify-content:center;margin-bottom:6px}
+.shade{position:fixed;inset:0;background:rgba(59,42,38,.45);z-index:40;display:none}
+.shade.on{display:block}
+aside{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--bg);z-index:50;transform:translateX(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+aside.on{transform:none}
+.ah{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--line)}
+.ah button{background:none;border:0;font-size:28px;line-height:1}
+.ab{flex:1;overflow-y:auto;padding:16px}
+.row{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.row .e{font-size:32px;background:var(--card);border-radius:12px;width:56px;height:56px;display:grid;place-items:center}
+.row .i{flex:1;font-size:14px}
+.q{display:flex;align-items:center;gap:8px}
+.q button{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);background:#fff}
+.tot{display:flex;justify-content:space-between;font-weight:800;font-size:18px;padding:16px 0}
+label{display:block;font-size:14px;font-weight:700;margin:10px 0 4px}
+input[type=text],input[type=tel],input[type=email],input[type=password],input[type=number],input[type=url],select,textarea{width:100%;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:11px}
+.pay{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;margin-top:8px;font-weight:700}
+.pay small{display:block;font-weight:400;color:var(--mut)}
+.note{font-size:13px;color:var(--mut);margin-top:8px}
+.ok{color:var(--ok);font-weight:800;font-size:20px}
+.empty{color:var(--mut);padding:24px 0}
+dialog{border:0;border-radius:20px;background:var(--bg);color:var(--fg);padding:20px;width:min(440px,92vw);max-height:90vh;overflow:auto}dialog::backdrop{background:rgba(59,42,38,.45)}
+.rv{animation:up .7s both}
+@supports (animation-timeline:view()){.rv{animation:up linear both;animation-timeline:view();animation-range:entry 0% entry 40%}}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes pop{40%{transform:scale(1.18)}}
+@keyframes flt{50%{transform:translateY(-12px) rotate(3deg)}}
+@keyframes blob{50%{border-radius:55% 45% 42% 58%/45% 55% 45% 55%}}
+@media(min-width:700px){nav{display:flex}.grid{grid-template-columns:repeat(3,1fr);gap:20px}.wg{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:900px){.hero{grid-template-columns:1.1fr .9fr;padding-top:56px}.chips{justify-content:center}.chip{width:120px}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media(prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="bar">Cash on Delivery, JazzCash, Easypaisa and Bank Transfer accepted</div>
+<header>
+  <span class="logo"><span>🛍</span>Everly</span>
+  <nav id="nav"></nav>
+  <span class="sp"></span>
+  <button class="hb" id="adminBtn" hidden>Admin</button><button class="hb" id="authBtn">Sign in</button><button class="cartbtn" id="openCart">Cart (<span id="cnt">0</span>)</button>
+</header>
+
+<section class="hero">
+  <div class="ht">
+    <span class="pill">Everything you need, one store</span>
+    <h1>Everything for <em>everyone</em> you love</h1>
+    <p>Fashion, tech, home, beauty and more. Shop in rupees, pay your way and get it delivered to your door.</p>
+    <div class="acts"><a class="btn" href="#shop">Shop now</a><a class="btn ghost" href="#cats">Explore categories</a></div>
+  </div>
+  <div class="hv" aria-hidden="true"><span class="f f1">👗</span><span class="f f2">🎧</span><span class="f f3">🎁</span><span class="f f4">👟</span><span class="f f5">💄</span><span class="big">🛍</span></div>
+</section>
+
+<h2 class="ctr rv" id="cats">Shop by category</h2>
+<div class="chips rv" id="chips" role="group" aria-label="Categories"></div>
+<main id="shop">
+  <h2 id="ttl">All products</h2>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="why rv">
+  <h2>Why shop with Everly</h2>
+  <div class="wg">
+    <div><span>🛍</span><b>Everything in one place</b><small>Fashion, tech, home and more</small></div>
+    <div><span>💳</span><b>Pay your way</b><small>COD, JazzCash, Easypaisa, bank</small></div>
+    <div><span>💬</span><b>Order on WhatsApp</b><small>Orders also reach us by email</small></div>
+    <div><span>📱</span><b>Works on every device</b><small>Phone, tablet and desktop</small></div>
+  </div>
+</section>
+<section class="help rv">
+  <h2>Need help? We are here</h2>
+  <p>Message us about any product or order.</p>
+  <div class="acts" style="justify-content:center"><a class="btn" id="hw" target="_blank" rel="noopener" href="#">Chat on WhatsApp</a><a class="btn ghost" id="hm" href="#">Send an email</a></div>
+</section>
+<footer>
+  <div class="logo"><span>🛍</span>Everly</div>
+  Everything, for everyone. Sample products shown, real products coming soon.
+</footer>
+
+<div class="shade" id="shade"></div>
+<aside id="cart" aria-label="Shopping cart">
+  <div class="ah"><strong style="font-size:20px">Your cart</strong><button id="closeCart" aria-label="Close cart">&times;</button></div>
+  <div class="ab" id="ab"></div>
+</aside>
+
+<dialog id="dlg"><div id="dc"></div></dialog>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+import {getAuth,onAuthStateChanged,GoogleAuthProvider,signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+import {getFirestore,collection,addDoc,getDocs,query,orderBy,limit,serverTimestamp} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
+const app=initializeApp({apiKey:"AIzaSyAoF9KPVPWouaPydLEMCw5zIXF52JLkU4s",authDomain:"system-66c60.firebaseapp.com",projectId:"system-66c60",storageBucket:"system-66c60.firebasestorage.app",messagingSenderId:"952652276368",appId:"1:952652276368:web:f4f58d35f910124df2ee15"});
+const auth=getAuth(app),db=getFirestore(app);
+var ADMIN="nasiramuner981@gmail.com";
+var WA="923417536790", MAIL="fangg6713@gmail.com";
+var SAMPLE=[
+["Classic Hoodie","Fashion",4500,"🧥"],["Everyday Sneakers","Fashion",8900,"👟"],
+["Wireless Earbuds","Electronics",5500,"🎧"],["Smart Watch","Electronics",12500,"⌚"],
+["Ceramic Mug Set","Home",1800,"☕"],["Table Lamp","Home",3200,"💡"],
+["Face Care Kit","Beauty",2800,"🧴"],["Yoga Mat","Sports",2400,"🧘"],
+["Football","Sports",1900,"⚽"],["Leather Wallet","Accessories",2200,"👛"],
+["Sunglasses","Accessories",2600,"🕶"],["Backpack","Accessories",5200,"🎒"]];
+var P=SAMPLE.slice();
+var CATS=["All","Fashion","Electronics","Home","Beauty","Sports","Accessories"];
+var cat="All", cart={};
+var $=function(i){return document.getElementById(i)};
+var pkr=function(n){return "Rs "+n.toLocaleString("en-PK")};
+
+function setCat(c){cat=c;$("ttl").textContent=c==="All"?"All products":c;draw();
+  [].forEach.call(document.querySelectorAll(".chip"),function(b){b.setAttribute("aria-pressed",b.dataset.c===c)})}
+function draw(){
+  $("grid").innerHTML=P.map(function(p,i){return p[1]===cat||cat==="All"?
+   '<div class="card" style="animation-delay:'+(i%12*50)+'ms"><div class="pimg" aria-hidden="true">'+(p[4]?'<img src="'+p[4]+'" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:6px">':p[3])+'</div><div class="pn">'+p[0]+'</div><div class="pc">'+p[1]+'</div><div class="pp">'+pkr(p[2])+'</div><button class="add" data-i="'+i+'">Add to cart</button></div>':""}).join("");
+}
+var IC={All:"🛍",Fashion:"👗",Electronics:"🎧",Home:"🏠",Beauty:"💄",Sports:"⚽",Accessories:"👜"};
+$("chips").innerHTML=CATS.map(function(c){return '<button class="chip" data-c="'+c+'" aria-pressed="'+(c==="All")+'"><span class="ci">'+IC[c]+'</span>'+c+'</button>'}).join("");
+$("nav").innerHTML=CATS.slice(1,5).map(function(c){return '<button data-n="'+c+'">'+c+'</button>'}).join("");
+$("chips").onclick=function(e){var b=e.target.closest("[data-c]");if(b){setCat(b.dataset.c);location.hash="shop"}};
+$("nav").onclick=function(e){if(e.target.dataset.n){setCat(e.target.dataset.n);location.hash="shop"}};
+$("grid").onclick=function(e){var i=e.target.dataset.i;if(i!==undefined){cart[i]=(cart[i]||0)+1;count();e.target.textContent="Added";setTimeout(function(){e.target.textContent="Add to cart"},900)}};
+
+function count(){var n=0;for(var k in cart)n+=cart[k];$("cnt").textContent=n;var b=$("openCart");b.classList.remove("pop");void b.offsetWidth;b.classList.add("pop")}
+function total(){var t=0;for(var k in cart)t+=P[k][2]*cart[k];return t}
+function open(on){$("cart").classList.toggle("on",on);$("shade").classList.toggle("on",on);if(on)view()}
+$("openCart").onclick=function(){open(true)};$("closeCart").onclick=$("shade").onclick=function(){open(false)};
+
+function view(){
+  var keys=Object.keys(cart);
+  if(!keys.length){$("ab").innerHTML='<p class="empty">Your cart is empty. Add something you like.</p>';return}
+  $("ab").innerHTML=keys.map(function(k){var p=P[k];return '<div class="row"><div class="e">'+p[3]+'</div><div class="i"><strong>'+p[0]+'</strong><br>'+pkr(p[2])+'</div><div class="q"><button data-m="'+k+'" aria-label="Remove one">-</button>'+cart[k]+'<button data-a="'+k+'" aria-label="Add one">+</button></div></div>'}).join("")+
+  '<div class="tot"><span>Total</span><span>'+pkr(total())+'</span></div>'+
+  '<form id="f"><label for="n">Full name</label><input type="text" id="n" required autocomplete="name">'+
+  '<label for="ph">Phone (WhatsApp)</label><input type="tel" id="ph" required autocomplete="tel">'+
+  '<label for="ad">Delivery address</label><textarea id="ad" rows="2" required autocomplete="street-address"></textarea>'+
+  '<label for="ci">City</label><input type="text" id="ci" required>'+
+  '<label>Payment method</label>'+
+  [["Cash on Delivery","Pay when your order arrives"],["JazzCash / Easypaisa","Send to our number, share the screenshot"],["Bank transfer","Send to our account, share the receipt"],["Card (Visa/Mastercard)","Coming soon"]].map(function(m,i){return '<label class="pay"><input type="radio" name="pm" value="'+m[0]+'"'+(i===0?" checked":"")+(i===3?" disabled":"")+'><span>'+m[0]+'<small>'+m[1]+'</small></span></label>'}).join("")+
+  '<p class="note">Account numbers for JazzCash, Easypaisa and bank transfer will be shared after you place the order.</p>'+
+  '<button class="btn" style="width:100%;margin-top:16px" type="submit">Place order</button></form>';
+  $("f").onsubmit=place;
+}
+$("ab").onclick=function(e){var a=e.target.dataset.a,m=e.target.dataset.m;
+  if(a!==undefined)cart[a]++;if(m!==undefined){cart[m]--;if(!cart[m])delete cart[m]}
+  if(a!==undefined||m!==undefined){count();view()}};
+
+function place(e){
+  e.preventDefault();
+  var lines=Object.keys(cart).map(function(k){return cart[k]+" x "+P[k][0]+" ("+pkr(P[k][2]*cart[k])+")"});
+  var msg="New Everly order\n"+lines.join("\n")+"\nTotal: "+pkr(total())+"\nName: "+$("n").value+"\nPhone: "+$("ph").value+"\nAddress: "+$("ad").value+", "+$("ci").value+"\nPayment: "+document.querySelector("input[name=pm]:checked").value;
+  var wa="https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
+  var ml="mailto:"+MAIL+"?subject="+encodeURIComponent("New Everly order")+"&body="+encodeURIComponent(msg);
+  saveOrder();
+  $("ab").innerHTML='<p class="ok">Order ready</p><p style="margin:8px 0 16px">Send it to the store on WhatsApp and by email so the order is confirmed.</p><a class="btn" style="display:block;text-align:center" href="'+wa+'" target="_blank" rel="noopener">Send on WhatsApp</a><a class="btn ghost" style="display:block;text-align:center;margin-top:10px" href="'+ml+'">Send by email</a>';
+  cart={};count();
+}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return "&#"+c.charCodeAt(0)+";"})}
+function saveOrder(){
+  var items=Object.keys(cart).map(function(k){return {name:P[k][0],qty:cart[k],price:P[k][2]}});
+  addDoc(collection(db,"orders"),{items:items,total:total(),name:$("n").value,phone:$("ph").value,address:$("ad").value,city:$("ci").value,payment:document.querySelector("input[name=pm]:checked").value,uid:auth.currentUser?auth.currentUser.uid:null,status:"new",createdAt:serverTimestamp()}).catch(function(e){console.error(e)});
+}
+async function loadProducts(){
+  try{var s=await getDocs(collection(db,"products"));
+  if(!s.empty){P=s.docs.map(function(d){var x=d.data();return [esc(x.name),esc(x.category),Number(x.price)||0,esc(x.emoji||"📦"),/^https:\/\//.test(x.image||"")?esc(x.image):""]});cart={};count();draw()}}catch(e){console.warn(e)}
+}
+var dlg=$("dlg"),dc=$("dc");
+function show(h){dc.innerHTML=h+'<button class="btn ghost" style="width:100%;margin-top:12px" id="x">Close</button>';$("x").onclick=function(){dlg.close()};if(!dlg.open)dlg.showModal()}
+function authView(){
+  show('<h2>Sign in</h2><button class="btn" style="width:100%" id="g">Continue with Google</button><p class="note" style="text-align:center">or use email</p><form id="af"><label for="em">Email</label><input type="email" id="em" required autocomplete="email"><label for="pw">Password (min 6)</label><input type="password" id="pw" required minlength="6" autocomplete="current-password"><button class="btn" style="width:100%;margin-top:12px" type="submit">Sign in</button><button class="btn ghost" style="width:100%;margin-top:8px" type="button" id="su">Create account</button></form><p class="note" id="am"></p>');
+  var m=function(e){$("am").textContent=e.code?e.code.replace("auth/","").replace(/-/g," "):"Something went wrong"};
+  var ok=function(){dlg.close()};
+  $("g").onclick=function(){signInWithPopup(auth,new GoogleAuthProvider()).then(ok).catch(m)};
+  $("af").onsubmit=function(e){e.preventDefault();signInWithEmailAndPassword(auth,$("em").value,$("pw").value).then(ok).catch(m)};
+  $("su").onclick=function(){if($("af").reportValidity())createUserWithEmailAndPassword(auth,$("em").value,$("pw").value).then(ok).catch(m)};
+}
+async function adminView(){
+  show('<h2>Admin</h2><form id="pf"><label for="pn">Product name</label><input type="text" id="pn" required><label for="pc">Category</label><select id="pc">'+CATS.slice(1).map(function(c){return '<option>'+c+'</option>'}).join("")+'</select><label for="pr">Price (PKR)</label><input type="number" id="pr" min="1" required><label for="pe">Emoji (used if no photo)</label><input type="text" id="pe" maxlength="4"><label for="pi">Photo link (https, optional)</label><input type="url" id="pi"><button class="btn" style="width:100%;margin-top:12px" type="submit">Add product</button></form><p class="note" id="pm2"></p><h2 style="margin-top:20px">Recent orders</h2><div id="ol">Loading</div>');
+  $("pf").onsubmit=function(e){e.preventDefault();addDoc(collection(db,"products"),{name:$("pn").value,category:$("pc").value,price:Number($("pr").value),emoji:$("pe").value||"📦",image:$("pi").value,createdAt:serverTimestamp()}).then(function(){$("pm2").textContent="Product added.";$("pf").reset();loadProducts()}).catch(function(){$("pm2").textContent="Could not save. Check the Firestore rules and the admin login."})};
+  try{var s=await getDocs(query(collection(db,"orders"),orderBy("createdAt","desc"),limit(20)));
+  $("ol").innerHTML=s.empty?"No orders yet.":s.docs.map(function(d){var o=d.data();return '<div class="row"><div class="i"><strong>'+esc(o.name)+'</strong>, '+esc(o.phone)+'<br>'+esc(o.address)+', '+esc(o.city)+'<br>'+(o.items||[]).map(function(i){return esc(i.qty)+' x '+esc(i.name)}).join(", ")+'<br>'+pkr(Number(o.total)||0)+', '+esc(o.payment)+'</div></div>'}).join("")}catch(e){$("ol").textContent="Could not load orders."}
+}
+$("authBtn").onclick=function(){if(auth.currentUser)signOut(auth);else authView()};
+$("adminBtn").onclick=adminView;
+onAuthStateChanged(auth,function(u){
+  $("authBtn").textContent=u?"Sign out":"Sign in";
+  $("adminBtn").hidden=!(u&&u.emailVerified&&u.email===ADMIN);
+});
+$("hw").href="https://wa.me/"+WA;$("hm").href="mailto:"+MAIL;
+draw();
+loadProducts();
+</script>
+</body>
+</html>
